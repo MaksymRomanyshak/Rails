@@ -1,7 +1,7 @@
 class Movie < ApplicationRecord
     GENRES = %W[action comedy drama horror romance thriller sci-fi western].freeze
 
-    
+    has_many :comments, as: :commentable
 
     validates :title,:year_of_creation, presence: true
     validates :title, uniqueness: {scope: %i[duration]} 
@@ -12,7 +12,7 @@ class Movie < ApplicationRecord
 
     def genres_validation
       unless 
-        enres.is_a?(Array) && genres.any? { |g| g.present? }
+        genres.is_a?(Array) && genres.any? { |g| g.present? }
         errors.add(:genres, 'At least one must be selected')
       end 
     end
