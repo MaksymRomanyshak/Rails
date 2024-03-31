@@ -70,3 +70,5 @@ end
 
 gem "devise", "~> 4.9"
 gem 'byebug'
+
+gem "pundit", "~> 2.3"
