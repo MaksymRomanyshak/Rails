@@ -7,5 +7,20 @@
 <p>Genre: <%= @movie.genres %></p>
 <p><%= link_to 'Edit', edit_movie_path(@movie) %></p>
 
+<div> 
+   <p> <%= @omdb_movie["Title"]%> </P>
+   <p> <%= @omdb_movie["Year"]%> </P>
+   <p> <%= @omdb_movie["Released"]%> </P>
+   <p> <%= @omdb_movie["Runtime"]%> </P>
+   <p> <%= @omdb_movie["Genre"]%> </P>
+   <p> <%= @omdb_movie["Director"]%> </P>
+   <p> <%= @omdb_movie[" Writer"]%> </P>
+   <p> <%= @omdb_movie["Actors"]%> </P>
+   <p> <%= @omdb_movie["Plot"]%> </P>
+   <p> <%= @omdb_movie["Language"]%> </P>
+   <p> <%= @omdb_movie["Country"]%> </P>
+   <p> <%= @omdb_movie["Awards"]%> </P>
+   <p> <%= @omdb_movie["Poster"]%> </P>
+</div>
 
 <%= render 'movies/shared/comment', movie: @movie %>
