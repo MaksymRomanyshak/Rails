@@ -1,0 +1,6 @@
+action_movie:
+  title: Action Movie
+  description: This movie is full of action.
+  year_of_creation: 2000
+  genres:
+    - action

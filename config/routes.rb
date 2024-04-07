@@ -11,7 +11,13 @@ Rails.application.routes.draw do
   # Defines the root path route ("/")
   # root "posts#index"
 
+
+  
   resources :movies do
+    collection do
+      get :omdb_search
+      post :omdb_import
+    end
     resources :comments
   end
 end
