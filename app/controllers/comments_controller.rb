@@ -3,8 +3,7 @@ class CommentsController < ApplicationController
     before_action :find_and_authorize_comment, except: :create
   
     def create
-      @commentable = @movie
-      @comment = @commentable.comments.build(comment_params)
+      @comment = Comment.build(comment_params)
       @comment.user = current_user
   
       if @comment.save
@@ -35,7 +34,7 @@ class CommentsController < ApplicationController
     private
   
     def comment_params
-      params.require(:comment).permit(:body)
+      params.require(:comment).permit(:body, :commentable_id, :commentable_type)
     end
   
     def set_movie

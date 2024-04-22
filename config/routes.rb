@@ -1,6 +1,14 @@
+require 'sidekiq/web'
+
 Rails.application.routes.draw do
+  get 'profiles/show'
+  get 'profiles/update'
   devise_for :users
+
+  mount Sidekiq::Web => "/sidekiq"
+
   root 'hi_world#index'
+
 
   # Define your application routes per the DSL in https://guides.rubyonrails.org/routing.html
 
@@ -18,6 +26,8 @@ Rails.application.routes.draw do
       get :omdb_search
       post :omdb_import
     end
-    resources :comments
+    resources :comments, only: %i[create edit update destroy]
   end
+
+  resource :profile, only: %i[edit update], controller: :profiles
 end

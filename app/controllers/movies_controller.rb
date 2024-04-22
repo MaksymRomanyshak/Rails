@@ -48,8 +48,16 @@ class MoviesController < ApplicationController
 
       # DELETE /movies/:id
       def destroy
-        
+        @movie = Movie.find(params[:id])
+        if @movie.destroy
+          redirect_to movies_path, 
+          Flash[:notice] = "Movie was successfully deleted."
+        else
+          redirect_to movies_path, 
+          Flash[:alert] = "Failed to delete movie."
+        end
       end
+      
 
       
       def omdb_search

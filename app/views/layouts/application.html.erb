@@ -21,9 +21,7 @@
     <%alertArr = alert.split(',')%>
     <div class="alert">
       <% alertArr.each do |el| %>
-      <ul class="element">
-        <li> <%= el %> </li>
-      </ul>
+        <p class="element"> <%= el %> </p>
       <%end%>
     </div>
     <% end %>

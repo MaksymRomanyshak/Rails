@@ -1,0 +1,14 @@
+ <% if comment_to.is_a?(Movie)%>
+    <% movie = comment_to %>
+    <h3>Comment</h3>
+<% elsif comment_to.is_a?(Comment)%>
+    <% movie = comment_to.commentable%>
+    <h3>Reply</h3>
+<% end %>
+
+<%= form_with(model: [movie, movie.comments.build], local: true) do |form| %>
+  <%= form.hidden_field :commentable_type, value: comment_to.class.name %>
+  <%= form.hidden_field :commentable_id, value: comment_to.id %>
+  <%= form.text_area :body %>
+  <%= form.submit %>
+<% end %>

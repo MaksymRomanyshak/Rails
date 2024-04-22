@@ -51,7 +51,7 @@ group :development, :test do
 end
 
 group :development do
-  gem 'letter_opener', '~> 1.4', '>= 1.4.1'
+  gem 'letter_opener', '~> 1.9.0'
   # Use console on exceptions pages [https://github.com/rails/web-console]
   gem "web-console"
 
@@ -73,3 +73,6 @@ gem 'byebug'
 
 gem "pundit", "~> 2.3"
 gem 'faraday', '~> 2.9'
+gem 'image_processing', '~> 1.12'
+gem 'sidekiq', '~> 7.1', '>= 7.1.2'
+gem 'redis'

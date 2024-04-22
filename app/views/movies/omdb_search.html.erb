@@ -21,7 +21,13 @@
             <tr>
                 <td> <%= movie['Title']%> </td>
                 <td> <%= movie['Year']%> </td>
-                <td> <%= image_tag(movie ['Poster']) %> </td>
+                <td>
+                    <% begin %>
+                    <%= image_tag(movie ['Poster']) %>
+                    <% rescue Sprockets::Rails::Helper::AssetNotFound %>
+                    <%= image_tag('default.png') %>
+                    <% end %>
+                </td>
                 <td>
                     <%= form_tag omdb_import_movies_path(omdb_id: movie['imdbID']), method: :post do %>
                         <%= submit_tag 'Import' %>
