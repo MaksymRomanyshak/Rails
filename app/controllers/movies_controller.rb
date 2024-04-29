@@ -2,7 +2,7 @@ class MoviesController < ApplicationController
 
     # GET /movies
     def index
-        @movies = Movie.all
+        @movies = Movie.all.order(created_at: :desc)
     end
 
      # GET /movies/:id
@@ -50,13 +50,13 @@ class MoviesController < ApplicationController
       def destroy
         @movie = Movie.find(params[:id])
         if @movie.destroy
-          redirect_to movies_path, 
-          Flash[:notice] = "Movie was successfully deleted."
+          flash[:notice] = "Movie was successfully deleted."
         else
-          redirect_to movies_path, 
-          Flash[:alert] = "Failed to delete movie."
+          flash[:alert] = "Failed to delete movie."
         end
+        redirect_to movies_path
       end
+      
       
 
       
@@ -70,25 +70,28 @@ class MoviesController < ApplicationController
     end
     
     def omdb_import
-        @omdb = OmdbClient.new
+        # @omdb = OmdbClient.new
 
-        @omdb_movie = @omdb.find_by_id(params[:omdb_id])
+        # @omdb_movie = @omdb.find_by_id(params[:omdb_id])
 
-        @movie = Movie.new(
-            title: @omdb_movie['Title'],
-            cover_image_url: @omdb_movie['Poster'],
-            year_of_creation: @omdb_movie['Year'],
-            description: @omdb_movie['Plot'],
-            duration: @omdb_movie['Runtime'],
-            director: @omdb_movie['Director'],
-            genres: @omdb_movie['Genre'].split(', ')
-        )
-        if @movie.save
-            redirect_to @movie
-        else
-            flash[:alert] = @movie.errors.full_messages.join(', ')
-            redirect_to omdb_search_movies_path
-        end
+        # @movie = Movie.new(
+        #     title: @omdb_movie['Title'],
+        #     cover_image_url: @omdb_movie['Poster'],
+        #     year_of_creation: @omdb_movie['Year'],
+        #     description: @omdb_movie['Plot'],
+        #     duration: @omdb_movie['Runtime'],
+        #     director: @omdb_movie['Director'],
+        #     genres: @omdb_movie['Genre'].split(', ')
+        # )
+        # if @movie.save
+        #     redirect_to @movie
+        # else
+        #     flash[:alert] = @movie.errors.full_messages.join(', ')
+        #     redirect_to omdb_search_movies_path
+        # end
+        MoviesImportJob.perform_later(params[:omdb_id], current_user)
+        flash[:notice] = 'Movie will be imported soon'
+        redirect_to movies_path
     end
 
     private
