@@ -1,32 +1,32 @@
-<h2>Comments:</h2>
+<h2 class="comments-header">Comments:</h2>
 
 <% movie.comments.includes(:user).each do |comment| %>
   <%= turbo_frame_tag(dom_id(comment)) do %>
     <div class="comment">
       <p>
         <%= comment.body %> 
-        <br />
-        <small> Posted by <%= comment.user.email %> | <%= time_ago_in_words(comment.created_at) %> ago</small>
+        <br>
+        <small class="comment-info">Posted by <%= comment.user.email %> | <%= time_ago_in_words(comment.created_at) %> ago</small>
 
         <% if policy(comment).edit? %>
-          <br />
+          <br>
           <%= link_to 'edit', edit_movie_comment_path(comment, movie_id: comment.commentable.id)  %>
-          <%= link_to 'destroy', movie_comment_path(comment, movie_id: comment.commentable), method: :delete, data: { turbo_method: :delete} %>
+          <%= link_to 'destroy', movie_comment_path(comment, movie_id: comment.commentable), method: :delete, data: { turbo_method: :delete } %>
         <% end %>
 
-        <div class='container-50'>
+        <div class="sub-comment">
           <% comment.comments.includes(:user).each do |sub_comment| %>
             <%= sub_comment.body %> 
-            <br />
-            <small> Posted by <%= sub_comment.user.email %> | <%= time_ago_in_words(sub_comment.created_at) %> ago</small>
-            <br />
+            <br>
+            <small class="comment-info">Posted by <%= sub_comment.user.email %> | <%= time_ago_in_words(sub_comment.created_at) %> ago</small>
+            <br>
           <% end %>
 
-          <%= render partial: 'comments/form', locals: {comment_to: comment}%>
+          <%= render partial: 'comments/form', locals: { comment_to: comment } %>
         </div>
       </p>
     </div>
   <% end %>
 <% end %>
 
-<%= render partial: 'comments/form', locals: {comment_to: @movie}%>
+<%= render partial: 'comments/form', locals: { comment_to: @movie } %>

@@ -1,9 +1,12 @@
-<h1>All movies</h1>
+<h1 class="header">All movies</h1>
+
 <% @movies.each do |movie| %>
-<h2 >Title: <%= link_to movie.title, movie_path(movie) %></h2>
-<h3>Description: <%= movie.description %></h3>
-<p>Duration: <%= movie.duration %></p>
-<p>Director: <%= movie.director %></p>
-<p>Year of Creation: <%= movie.year_of_creation %></p>
-<p>Genre: <%= movie.genres %></p>
+  <div class="movie-details">
+    <h2>Title: <%= link_to movie.title, movie_path(movie) %></h2>
+    <h3>Description: <%= movie.description %></h3>
+    <p>Duration: <%= movie.duration %></p>
+    <p>Director: <%= movie.director %></p>
+    <p>Year of Creation: <%= movie.year_of_creation %></p>
+    <p>Genre: <%= movie.genres %></p>
+  </div>
 <% end %>

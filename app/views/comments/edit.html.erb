@@ -1,12 +1,10 @@
-<h1>Edit Comment</h1>
-
 <%= turbo_frame_tag(dom_id(@comment)) do %>
-  <%= form_for @comment, url: movie_comment_path(@comment, movie_id: @comment.commentable.id), method: :patch do |form| %>
-    <div class="field">
-      <%= form.text_area :body, class: "form-control" %>
+  <%= form_for @comment, url: movie_comment_path(@comment, movie_id: @comment.commentable.id), method: :patch, html: { class: "edit-comment-form" } do |form| %>
+    <div >
+      <%= form.text_area :body %>
     </div>
-    <div class="actions">
-      <%= form.submit class: "btn btn-primary" %>
+    <div >
+      <%= form.submit  %>
     </div>
   <% end %>
-<%end %>
+<% end %>

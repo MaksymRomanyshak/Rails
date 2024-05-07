@@ -1,11 +1,13 @@
-<h1>Show movie</h1>
-<h2 >Title: <%= @movie.title %></h2>
-<h3>Description: <%= @movie.description %></h3>
-<p>Duration: <%= @movie.duration %></p>
-<p>Director: <%= @movie.director %></p>
-<p>Year of Creation: <%= @movie.year_of_creation %></p>
-<p>Genre: <%= @movie.genres %></p>
-<p><%= link_to 'Edit', edit_movie_path(@movie) %></p>
-<%= link_to 'Delete', movie_path(@movie), method: :delete %>
+<h1 class="movie-header">Show movie</h1>
+<h2 class="movie-title">Title: <%= @movie.title %></h2>
+<h3 class="movie-description">Description: <%= @movie.description %></h3>
+<p class="movie-info">Duration: <%= @movie.duration %></p>
+<p class="movie-info">Director: <%= @movie.director %></p>
+<p class="movie-info">Year of Creation: <%= @movie.year_of_creation %></p>
+<p class="movie-info">Genre: <%= @movie.genres %></p>
+<div class="movie-actions">
+  <%= link_to 'Edit', edit_movie_path(@movie), class: 'btn btn-primary' %>
+  <%= link_to 'Delete', movie_path(@movie), method: :delete, data: { confirm: 'Are you sure?' }, class: 'btn btn-danger' %>
+</div>
 
 <%= render 'movies/shared/comment', movie: @movie %>

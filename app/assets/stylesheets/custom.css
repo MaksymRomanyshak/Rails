@@ -1,19 +1,174 @@
-.alert{
-    background-color: gold; 
+.alert {
+    background-color: gold;
     border-radius: 5px;
     padding: 20px;
-    box-shadow: 0 0 10px rgba(0, 0, 0, 0.2); 
-}
-
-.element{
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.2);
+    margin: 15px auto; 
+    max-width: 55%; 
+  }
+  
+  .element {
     margin-bottom: 0;
-}
-
-.pull-right{
-    float: right
-}
+  }
+  
 
 .container-50{
     width: 50%; 
     margin: 0 auto;
 }
+
+.pull-right {
+    float: right;
+  }
+  
+  .avatar {
+    margin-right: 10px; /* Adjust as needed */
+  }
+  
+  .user-links {
+    margin-top: 10px; /* Adjust as needed */
+  }
+
+  .profile-header {
+    text-align: center;
+    margin-bottom: 20px;
+  }
+  
+  .profile-image {
+    max-width: 200px;
+    margin: 0 auto;
+    display: block;
+  }
+  
+  .profile-form {
+    margin-top: 20px;
+  }
+  
+  .profile-form label {
+    display: block;
+    margin-bottom: 5px;
+  }
+  
+  .profile-form input[type="text"],
+  .profile-form input[type="file"],
+  .profile-form input[type="submit"] {
+    width: 100%;
+    margin-bottom: 10px;
+  }
+
+  .movie-header {
+    text-align: center;
+  }
+  
+  .movie-title {
+    font-size: 24px;
+  }
+  
+  .movie-description {
+    font-size: 18px;
+    margin-bottom: 10px;
+  }
+  
+  .movie-info {
+    font-size: 16px;
+  }
+  
+  .movie-actions {
+    margin-top: 20px;
+  }
+  
+  .movie-actions a {
+    margin-right: 10px;
+  }
+  
+  .omdb-header {
+    text-align: center;
+  }
+  
+  .omdb-search-form {
+    margin-bottom: 20px;
+  }
+  
+  .omdb-table {
+    width: 100%;
+    border-collapse: collapse;
+  }
+  
+  .omdb-table th,
+  .omdb-table td {
+    padding: 8px;
+    border: 1px solid #ddd;
+  }
+  
+  .omdb-table th {
+    background-color: #f2f2f2;
+  }
+  
+  .omdb-actions-form {
+    display: inline-block;
+  }
+  
+  .new-project-form {
+    max-width: 600px;
+    margin: 0 auto;
+  }
+  
+  .header {
+    text-align: center;
+  }
+  
+  .movie-details {
+    margin-bottom: 20px;
+  }
+  
+  .movie-form {
+    max-width: 70%;
+    margin: 0 auto;
+  }
+  
+  .form-group {
+    margin-bottom: 20px;
+  }
+  
+  .form-label {
+    display: block;
+    font-weight: bold;
+  }
+  
+  .form-input {
+    width: 100%;
+    padding: 8px;
+    border: 1px solid #ccc;
+    border-radius: 4px;
+  }
+  
+  .btn {
+    display: inline-block;
+    padding: 10px 20px;
+    background-color: #007bff;
+    color: #fff;
+    border: none;
+    border-radius: 4px;
+    cursor: pointer;
+    text-align: center;
+    text-decoration: none;
+  }
+  
+  .comments-header {
+    margin-bottom: 20px;
+  }
+  
+  .comment {
+    margin-bottom: 20px;
+    border: 1px solid #ccc;
+    padding: 10px;
+  }
+  
+  .comment-info {
+    font-size: 12px;
+  }
+  
+  .sub-comment {
+    margin-left: 20px;
+  }
+  
